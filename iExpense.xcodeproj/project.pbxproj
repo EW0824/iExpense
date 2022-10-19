@@ -11,6 +11,9 @@
 		0E18E2EE28DE7DC900865559 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18E2ED28DE7DC900865559 /* ContentView.swift */; };
 		0E18E2F028DE7DCA00865559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E18E2EF28DE7DCA00865559 /* Assets.xcassets */; };
 		0E18E2F328DE7DCA00865559 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E18E2F228DE7DCA00865559 /* Preview Assets.xcassets */; };
+		0EE0555C28F2730800F68AAC /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE0555B28F2730800F68AAC /* AddView.swift */; };
+		0EFE2B0328ECF69700CF348C /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE2B0228ECF69700CF348C /* ExpenseItem.swift */; };
+		0EFE2B0528ECF7C800CF348C /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE2B0428ECF7C800CF348C /* Expenses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		0E18E2ED28DE7DC900865559 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0E18E2EF28DE7DCA00865559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E18E2F228DE7DCA00865559 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0EE0555B28F2730800F68AAC /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		0EFE2B0228ECF69700CF348C /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
+		0EFE2B0428ECF7C800CF348C /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,9 @@
 			children = (
 				0E18E2EB28DE7DC900865559 /* iExpenseApp.swift */,
 				0E18E2ED28DE7DC900865559 /* ContentView.swift */,
+				0EE0555B28F2730800F68AAC /* AddView.swift */,
+				0EFE2B0228ECF69700CF348C /* ExpenseItem.swift */,
+				0EFE2B0428ECF7C800CF348C /* Expenses.swift */,
 				0E18E2EF28DE7DCA00865559 /* Assets.xcassets */,
 				0E18E2F128DE7DCA00865559 /* Preview Content */,
 			);
@@ -137,7 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFE2B0528ECF7C800CF348C /* Expenses.swift in Sources */,
 				0E18E2EE28DE7DC900865559 /* ContentView.swift in Sources */,
+				0EE0555C28F2730800F68AAC /* AddView.swift in Sources */,
+				0EFE2B0328ECF69700CF348C /* ExpenseItem.swift in Sources */,
 				0E18E2EC28DE7DC900865559 /* iExpenseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +191,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Edmond;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -239,6 +252,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Edmond;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
