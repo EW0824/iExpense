@@ -11,7 +11,7 @@ import SwiftUI
 /* Struct: everytime a property changes the whole struct is reconstructed.
  Class: only the property is changed.
  
- Hence @State only wor cks with structs. We can use: @StateObject, @ObservedObject, @EnvironmentObject.
+ Hence @State only works with structs. We can use: @StateObject, @ObservedObject, @EnvironmentObject for classes.
  
  */
 
@@ -29,8 +29,6 @@ struct SecondView: View {
     
     let name: String
     
-    
-    
     var body: some View {
         Button("Dismiss"){
             dismiss()
@@ -38,9 +36,36 @@ struct SecondView: View {
     }
 }
 
+
 struct ArchivableUser: Codable {
     let firstName: String
     let lastName: String
+}
+
+
+struct ExpenseOf: View {
+    
+    let item: ExpenseItem
+    
+    var body: some View {
+        HStack {
+            
+            VStack(alignment: .leading) {
+                
+                Text(item.name)
+                    .font((item.amount > 50) ? .headline : .body)
+                
+                Text(item.type)
+                    .italic()
+            }
+            
+            Spacer()
+            
+            Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                .font((item.amount > 500) ? .headline: .body)
+            
+        }
+    }
 }
 
 
@@ -60,189 +85,38 @@ struct ContentView: View {
         NavigationView{
             
             List {
-                ForEach(expenses.items) { item in
-                    
-                    if item.type == "Personal" {
+                
+                // Personal Expenses
+                Section {
+                    ForEach(expenses.items) { item in
                         
+                        if item.type == "Personal" {
+                            
+                            ExpenseOf(item: item)
+                        }
+                    }
+                    .onDelete(perform: removeItems)
+                } header: {
+                    Text("Personal Expenses")
+                }
+                
+                // Business Expenses
+                Section {
+                    ForEach(expenses.items) { item in
                         
-                        HStack {
+                        if item.type == "Business" {
                             
-                            VStack(alignment: .leading) {
-                                
-                                Text(item.name)
-                                    .font((item.amount > 10) ? .headline : .system)
-                                
-                                Text(item.type)
-                                    .italic()
-                                                                
-                            }
-                            
-                            Spacer()
-                            
-                            Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                                .font((item.amount > 100) ? .headline: .system)
+                            ExpenseOf(item: item)
                             
                         }
-                        
-                        
-                        
-//                        if item.amount < 10 {
-//
-//                            HStack{
-//                                VStack(alignment: .leading){
-//
-//                                    Text(item.name)
-//
-//                                    Text(item.type)
-//                                        .italic()
-//
-//                                }
-//
-//                                Spacer()
-//
-//                                Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-//                            }
-//
-//                        }
-//
-//                        else if item.amount < 100 {
-//
-//                            HStack{
-//                                VStack(alignment: .leading){
-//
-//                                    Text(item.name)
-//                                        .font(.headline)
-//
-//                                    Text(item.type)
-//                                        .italic()
-//
-//                                }
-//
-//                                Spacer()
-//
-//                                Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-//                            }
-//
-//                        }
-//
-//                        else {
-//                            HStack{
-//                                VStack(alignment: .leading){
-//
-//                                    Text(item.name)
-//                                        .font(.headline)
-//
-//                                    Text(item.type)
-//                                        .italic()
-//
-//                                }
-//
-//                                Spacer()
-//
-//                                Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-//                                    .font(.headline)
-//                            }
-//
-//                        }
-
                     }
-                    
-//                    else {
-//
-//                        Section {
-//
-//
-//                            Text("Here lies the business expenses")
-//
-//
-//
-//                        } header: {
-//                            Text("Business Expenses")
-//                        }
-//
-//
-//
-//
-//                    }
-                    
+                    .onDelete(perform: removeItems)
+                } header: {
+                    Text("Business Expenses")
                 }
-                .onDelete(perform: removeItems)
                 
                 
-//                Section {
-//
-//                    ForEach(expenses.items) { item in
-//
-//                        if expenses.type == "Business" {
-//
-//                            if item.amount < 10 {
-//
-//                                HStack{
-//                                    VStack(alignment: .leading){
-//
-//                                        Text(item.name)
-//
-//                                        Text(item.type)
-//                                            .italic()
-//
-//                                    }
-//
-//                                    Spacer()
-//
-//                                    Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-//                                }
-//
-//                            }
-//
-//                            else if item.amount < 100 {
-//
-//                                HStack{
-//                                    VStack(alignment: .leading){
-//
-//                                        Text(item.name)
-//                                            .font(.headline)
-//
-//                                        Text(item.type)
-//                                            .italic()
-//
-//                                    }
-//
-//                                    Spacer()
-//
-//                                    Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-//                                }
-//
-//                            }
-//
-//                            else {
-//                                HStack{
-//                                    VStack(alignment: .leading){
-//
-//                                        Text(item.name)
-//                                            .font(.headline)
-//
-//                                        Text(item.type)
-//                                            .italic()
-//
-//                                    }
-//
-//                                    Spacer()
-//
-//                                    Text(item.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-//                                        .font(.headline)
-//                                }
-//                            }
-//                        }
-//                    }
-////                     .onDelete(perform: removeItems)
-//
-//                } header: {
-//                        Text("Business Expenses")
-//                }
-                    
-                    
-                    
-                
+            // end bracket of List
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -256,9 +130,11 @@ struct ContentView: View {
                 AddView(expenses: expenses)
                 
             }
+        // end bracket of Navigation view
         }
         
     }
+    
     
     func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
@@ -266,11 +142,6 @@ struct ContentView: View {
     
     
 }
-
-
-
-
-
 
 
 
